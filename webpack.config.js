@@ -14,7 +14,8 @@ const jsLoaders = () => {
     {
       loader: 'babel-loader',
       options: {
-        presets: ['@babel/preset-env']
+        presets: ['@babel/preset-env'],
+        plugins: ['@babel/plugin-proposal-class-properties']
       }
     }
   ]
@@ -29,7 +30,12 @@ const jsLoaders = () => {
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: ['@babel/polyfill', 'webpack-dev-server/client', './index.js'],
+  entry: [
+    '@babel/polyfill',
+    'webpack-dev-server/client',
+    'webpack/hot/dev-server',
+    './index.js'
+  ],
   output: {
     filename: filename('js'),
     path: path.resolve(__dirname, 'dist'),
