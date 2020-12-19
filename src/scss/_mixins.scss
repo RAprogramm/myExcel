@@ -11,14 +11,19 @@
     font-size: 18px;
   }
 
-  &:active, & .active {
-    color: $color;
+  &:hover {
+    background: #caf6c8;
+    cursor: pointer;
+    border-radius: 7px;
+    box-shadow: 2px 2px 3px forestgreen;
   }
 
-  &:hover {
-    //background: #eee;
-    cursor: pointer;
-    text-shadow: 1px 1px 2px #808080;
+  &:active, &.active {
+    box-shadow: 1px 1px 2px forestgreen;
+    top: 1px;
+    left: 1px;
+    background: linear-gradient(to bottom right, #caf6c8, #a7d7a7);
+    border-radius: 7px;
   }
 }
 
