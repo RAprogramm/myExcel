@@ -11,7 +11,8 @@
   border-bottom: 1px solid $border-color;
   padding: 7px 10px;
   display: flex;
+  box-shadow: $border-shadow;
   .button {
-    @include button(green);
+    @include button(rgba(0, 0, 0, .7));
   }
 }

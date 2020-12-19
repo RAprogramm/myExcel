@@ -24,6 +24,7 @@
     background: #c3f1c3;
     border-top: none;
     position: relative;
+    box-shadow: $border-shadow;
   }
   .row-data {
     display: flex;
@@ -40,6 +41,7 @@
     border-top: 0;
     border-left: 0;
     position: relative;
+    box-shadow: $border-shadow;
   }
   .cell {
     min-width: 40px;
@@ -56,6 +58,7 @@
       border: none;
       outline: 2px solid #39ae49;
       z-index: 2;
+      box-shadow: 3px 3px 5px #025502;
     }
   }
 
