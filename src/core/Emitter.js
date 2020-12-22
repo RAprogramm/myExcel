@@ -3,22 +3,22 @@ export class Emitter {
     this.listeners = {}
   }
 
-  emit(eventName, ...args) {
-    if (!Array.isArray(this.listeners[eventName])) {
+  emit(event, ...args) {
+    if (!Array.isArray(this.listeners[event])) {
       return false
     }
-    this.listeners[eventName].forEach(listener => {
+    this.listeners[event].forEach(listener => {
       listener(...args)
     })
     return true
   }
 
-  subscribe(eventName, fn) {
-    this.listeners[eventName] = this.listeners[eventName] || []
-    this.listeners[eventName].push(fn)
+  subscribe(event, fn) {
+    this.listeners[event] = this.listeners[event] || []
+    this.listeners[event].push(fn)
     return () => {
-      this.listeners[eventName] =
-        this.listeners[eventName].filter(listener => listener !== fn)
+      this.listeners[event] =
+        this.listeners[event].filter(listener => listener !== fn)
     }
   }
 }
