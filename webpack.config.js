@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
@@ -30,16 +31,18 @@ const jsLoaders = () => {
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: [
-    '@babel/polyfill',
-    'webpack-dev-server/client',
-    'webpack/hot/dev-server',
-    './index.js'
-  ],
+  entry: isDev
+    ? [
+      '@babel/polyfill',
+      'webpack-dev-server/client',
+      'webpack/hot/dev-server',
+      './index.js']
+    : [
+      '@babel/polyfill', './index.js'
+    ],
   output: {
     filename: filename('js'),
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
   },
   resolve: {
     extensions: ['.js'],
@@ -73,6 +76,9 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: filename('css')
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ],
   module: {
